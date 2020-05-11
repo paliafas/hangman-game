@@ -1,38 +1,238 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+    color: #333;
+    text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Utility
+***************************************/
+.container {
+    padding: 0 1rem;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
-.App-link {
-  color: #61dafb;
+.react-word {
+    color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.datamuse-api-word {
+    color: #56baba;
+}
+
+/* Loading
+***************************************/
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-indicator {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loading-indicator p {
+    font-size: 1.5rem;
+}
+
+.loading-indicator i {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    animation: spinner 2s linear infinite;
+}
+
+/* Buttons
+***************************************/
+.button {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px #d6d6d6;
+    background-color: #fff;
+    padding-bottom: 3px;
+    font-size: 1.25rem;
+}
+
+.button:hover {
+    background-color: #eee;
+}
+
+.button:active {
+    box-shadow: none;
+    background-color: #ddd;
+    position: relative;
+    top: 3px;
+}
+
+.happy-button {
+    color: #fff;
+    font-size: 1.5rem;
+    background-color: #91d67a;
+    padding: 1rem 1.5rem;
+}
+
+.happy-button:hover {
+    background-color: #85c470;
+}
+
+.happy-button:active {
+    background-color: #7bb567;
+}
+
+/* Game Area
+***************************************/
+.game-area-content {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Lives
+***************************************/
+.lives {
+    margin-top: 1.5rem;
+}
+
+.lives img {
+    display: block;
+    width: 50%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Word Letters
+***************************************/
+.word-letters {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 75px;
+    margin-bottom: 2rem;
+}
+
+.word-letter {
+    flex-shrink: 1;
+    text-align: center;
+    margin-right: 0.2rem;
+    border-bottom: 3px solid rgba(0, 0, 0, 0);
+}
+
+.word-letter:last-child {
+    margin-right: 0;
+}
+
+.word-letter-unknown {
+    border-bottom: 3px solid #333;
+}
+
+/* Interaction Area
+***************************************/
+#interaction-area {
+    height: 250px;
+}
+
+/* Letter Buttons
+***************************************/
+.letter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.letter-buttons .button:last-child {
+    margin: 0 auto;
+}
+
+.letter-buttons .button {
+    flex: 0 0 18%;
+    margin-bottom: 2.5%;
+}
+
+.letter-button-used {
+    visibility: hidden;
+}
+
+/* Game End
+***************************************/
+.game-end {
+    text-align: center;
+}
+
+.game-end p {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+/* Main Footer
+***************************************/
+#main-footer {
+    height: 10vh;
+    background-color: #333;
+}
+
+#main-footer,
+#main-footer a {
+    color: #f4f4f4;
+}
+
+#main-footer .info {
+    text-align: center;
+    font-size: 0.75rem;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main-footer .info p {
+    margin-right: 2rem;
+}
+
+@media (min-width: 768px) {
+    .word-letters {
+        padding: 0 2rem;
+    }
+
+    .word-letter {
+        flex-basis: 2rem;
+    }
+
+    .word-letter span {
+        font-size: 2rem !important;
+    }
+
+    .game-area-content {
+        height: 95vh;
+    }
+
+    #main-footer {
+        height: 5vh;
+    }
+
+    #main-footer .info {
+        font-size: 1rem;
+        height: 5vh;
+    }
 }
